@@ -92,11 +92,9 @@ L.geoJSON(geojson, {
     return layer.feature.properties.description;
 }).addTo(map);
 
-map.fitBounds(geojson.getBounds())
+// map.fitBounds(geojson.getBounds())
 
-L.geoJSON(geojson).bindPopup(function (layer) {
-     return layer.feature.properties.description;
- }).addTo(map);
+
 </script>
  
 </body>
