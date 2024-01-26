@@ -94,6 +94,14 @@ L.geoJSON(geojson, {
 
 // map.fitBounds(geojson.getBounds())
 
+// add popups
+L.marker([51.50789953071717, -0.12460382873527465]).bindPopup("<b>Hello world!</b><br>I am a popup.").addTo(map);
+
+var popup = L.popup()
+    .setLatLng([47.79791673620869, 13.046761183753432]
+          )
+    .setContent('<p>Hello world!<br />This is Salzburg.</p>')
+    .addTo(map);
 
 </script>
  
