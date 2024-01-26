@@ -103,6 +103,16 @@ var popup = L.popup({closeButton: false})
     .setContent('<p>Hello world!<br />This is Salzburg.</p>')
     .addTo(map);
 
+// show latlong on click
+  function onMapClick(e) {
+    popup
+      .setLatLng(e.latlng)
+      .setContent("You clicked the map at " + e.latlng.toString())
+      .openOn(map);
+  }
+
+  map.on('click', onMapClick);
+
 </script>
  
 </body>
