@@ -92,7 +92,7 @@ L.geoJSON(geojson, {
     return layer.feature.properties.description;
 }).addTo(map);
 
-// map.fitBounds(geojson.getBounds())
+map.fitBounds(geojson.getBounds())
 
 // add popups
 L.marker([51.50789953071717, -0.12460382873527465]).bindPopup("<b>Hello world!</b><br>I am a popup.").addTo(map);
