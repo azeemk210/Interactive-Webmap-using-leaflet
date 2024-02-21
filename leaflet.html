@@ -12,19 +12,18 @@ crossorigin=""/>
  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
-     <style>
-		html, body {
-			height: 100%;
-			margin: 0;
-		}
-		.leaflet-container {
-			height: 100%;
-			width: 100%;
-			max-width: 100%;
-			max-height: 100%;
-		}
-	</style>
-
+<style>
+	html, body {
+		height: 100%;
+		margin: 0;
+	}
+	.leaflet-container {
+		height: 100%;
+		width: 100%;
+		max-width: 100%;
+		max-height: 100%;
+	}
+</style>
 </head>
 <body>
     <div id="map"></div>
@@ -59,27 +58,14 @@ crossorigin=""/>
   "features": [
     {
       "type": "Feature",
-      "properties": {},
       "geometry": {
+        "type": "LineString",
         "coordinates": [
-          [
-            9.721367317120695,
-            51.25867849058534
-          ],
-          [
-            14.031803593630599,
-            47.530158325087655
-          ],
-          [
-            18.936164492852186,
-            46.99613250560063
-          ],
-          [
-            16.734060181221565,
-            45.28256486883552
-          ]
-        ],
-        "type": "LineString"
+          [9.721367317120695, 51.25867849058534],
+          [14.031803593630599, 47.530158325087655],
+          [18.936164492852186, 46.99613250560063],
+          [16.734060181221565, 45.28256486883552]
+        ]
       }
     }
   ]
@@ -92,31 +78,27 @@ L.geoJSON(geojson, {
     return layer.feature.properties.description;
 }).addTo(map);
 
-map.fitBounds(geojson.getBounds())
+// Get bounds from GeoJSON data
+var bounds = L.geoJSON(geojson).getBounds();
+map.fitBounds(bounds);
 
 // add popups
 L.marker([51.50789953071717, -0.12460382873527465]).bindPopup("<b>Hello world!</b><br>I am a popup.").addTo(map);
 
 var popup = L.popup({closeButton: false})
-    .setLatLng([47.79791673620869, 13.046761183753432]
-          )
+    .setLatLng([47.79791673620869, 13.046761183753432])
     .setContent('<p>Hello world!<br />This is Salzburg.</p>')
     .addTo(map);
 
 // show latlong on click
-  function onMapClick(e) {
+function onMapClick(e) {
     popup
       .setLatLng(e.latlng)
       .setContent("You clicked the map at " + e.latlng.toString())
       .openOn(map);
-  }
+}
 
-  map.on('click', onMapClick);
-
-
+map.on('click', onMapClick);
 </script>
- 
 </body>
-     
-
 </html>
